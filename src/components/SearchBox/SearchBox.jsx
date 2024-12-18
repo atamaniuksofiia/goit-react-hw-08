@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
-
+import { selectNameFilter } from "../../redux/filters/selectors";
+import { changeFilter } from "../../redux/filters/slice";
 const SearchBox = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectNameFilter);
+
   const handleChange = (e) => {
-    dispatch(changeFilter(e.target.value)); // Оновлюємо фільтр в Redux
+    dispatch(changeFilter(e.target.value));
   };
+
   return (
     <input
       type="text"

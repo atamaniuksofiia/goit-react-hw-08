@@ -1,37 +1,25 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import ContactList from "../components/Contact/ContactList";
+import ContactForm from "../components/Contact/ContactForm";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { fetchContacts } from "../redux/contacts/operations";
-import {
-  selectContacts,
-  selectLoading,
-  selectError,
-} from "../redux/contacts/selectors";
-import Contact from "../components/Contact/Contact"; // Ваш компонент контактів
+import SearchBox from "../components/SearchBox/SearchBox";
+import filtersReducer from "../redux/filters/slice";
 
-const ContactsPage = () => {
+const ContactPage = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-
   useEffect(() => {
-    dispatch(fetchContacts()); // Завантаження контактів при завантаженні сторінки
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
     <div>
-      <h1>Контакти</h1>
-      {isLoading && <p>Завантаження...</p>}
-      {error && <p>Помилка: {error}</p>}
-      <ul>
-        {contacts.length > 0 ? (
-          contacts.map((contact) => <Contact key={contact.id} {...contact} />)
-        ) : (
-          <p>Немає контактів.</p>
-        )}
-      </ul>
+      <h1>Contacts</h1>
+      <SearchBox />
+      <ContactForm />
+      <ContactList filter={filtersReducer} />
     </div>
   );
 };
 
-export default ContactsPage;
+export default ContactPage;

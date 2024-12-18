@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
-import AppBar from "../AppBar/AppBar";
+import Navigation from "../Navigation/Navigation"; // Ваше меню
+
 const Layout = () => (
-  <>
-    <AppBar />
-    <Outlet />
-  </>
+  <div>
+    <header>
+      <Navigation />
+    </header>
+    <main>
+      <Outlet />
+    </main>
+  </div>
 );
 
 export default Layout;
