@@ -1,15 +1,13 @@
-import { Outlet } from "react-router-dom";
-import Navigation from "../Navigation/Navigation"; // Ваше меню
+import AppBar from "../AppBar/AppBar";
+import { Suspense } from "react";
 
-const Layout = () => (
-  <div>
-    <header>
-      <Navigation />
-    </header>
-    <main>
-      <Outlet />
-    </main>
-  </div>
-);
+const Layout = ({ children }) => {
+  return (
+    <div>
+      <AppBar />
+      <Suspense fallback={null}>{children}</Suspense>
+    </div>
+  );
+};
 
 export default Layout;

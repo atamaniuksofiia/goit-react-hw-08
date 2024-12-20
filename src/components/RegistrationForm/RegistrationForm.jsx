@@ -5,8 +5,19 @@ import { register } from "../../redux/auth/operations";
 const RegistrationForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
-    dispatch(register(values));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+
+    form.reset();
   };
 
   return (

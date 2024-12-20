@@ -5,8 +5,16 @@ import { login } from "../../redux/auth/operations";
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
-    dispatch(login(values));
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(login(values))
+      .unwrap()
+      .then(() => {
+        console.log("login success");
+        resetForm();
+      })
+      .catch(() => {
+        console.log("login error");
+      });
   };
 
   return (

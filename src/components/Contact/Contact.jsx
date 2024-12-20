@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
-import { selectLoading, selectError } from "../../redux/contacts/selectors"; // Імпортуємо селектори
+import { selectError, selectLoading } from "../../redux/contacts/selectors";
 
 const Contact = ({ id, name, phone }) => {
   const dispatch = useDispatch();
