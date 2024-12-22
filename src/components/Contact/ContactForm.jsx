@@ -12,7 +12,7 @@ const ContactForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addContact({ name: "Софія", number: "5674657657" }));
+    dispatch(addContact({ name: "", number: "" }));
     setName("");
     setNumber("");
   };
