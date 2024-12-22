@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
 import { selectError, selectLoading } from "../../redux/contacts/selectors";
 
-const Contact = ({ id, name, phone }) => {
+const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -13,7 +13,7 @@ const Contact = ({ id, name, phone }) => {
 
   return (
     <li>
-      {name}: {phone}
+      {name}: {number}
       {loading ? (
         <span>Завантаження...</span>
       ) : (
